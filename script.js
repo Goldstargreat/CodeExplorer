@@ -7,3 +7,15 @@ const headerNavs = [
 ];
 const $headerNavUlv = document.querySelector('.header__nav ul');
 
+for (const nav of headerNavs) {
+  const $li = document.createElement('li');
+  $li.classList.add('header__nav-item');
+
+  const $a = document.createElement('a');
+  $a.textContent = nav.title;
+  $a.setAttribute('href', nav.link);
+
+  $li.appendChild($a);
+  $headerNavUlv.appendChild($li);
+
+}
