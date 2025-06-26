@@ -11,91 +11,55 @@
   <script defer src="./script.js"></script>
 </head>
 <body>
+
   <section class="intro">
     <div class="intro__dark">
       <div class="intro__type">
-        <div><span aria-hidden="true">😎</span> 개발이</div>
-        <div>즐거워진다<span class="underscore">_</div>
+        <div><span aria-hidden="true">😎</span> 개발이이</div>
+        <div>즐거워진다<span class="underscore">_</span></div>
       </div>
     </div>
     <div class="intro__tilt"></div>
     <div class="intro__tilt--flip"></div>
   </section>
 
-    <header class="header">
+  <header class="header">
     <h1>
       <a class="header__homelink" href="#">
         <img class="header__logo" src="./images/goldstargreat.png" alt="홈으로">
       </a>
     </h1>
-    <input class="header__menu-btn" type="checkbox">
+
+    <!-- 버튼으로 수정 -->
+    <button class="header__menu-btn"></button>
     <nav class="header__nav">
       <ul>
-        <li class="header__nav-item">
-          <a href="#about">웹 프로그래밍</a>  //수정될 곳 
-        </li>
-        <li class="header__nav-item">
-          <a href="#html">HTML</a>
-        </li>
-        <li class="header__nav-item">
-          <a href="#css">CSS</a>
-        </li>
-        <li class="header__nav-item">
-          <a href="#curriculum">교과과정</a>
-        </li>
-        <li class="header__nav-item">
-          <a href="#contact">연락하기</a>
-        </li>
+        
       </ul>
     </nav>
   </header>
-<main>
+
+  <main>
+
     <section id="about" class="section">
       <header class="section__header">
         <strong class="section__tag">
           about
         </strong>
         <h1 class="section__title">
-          웹 프로그래밍 기초는
+          goldstargreat
         </h1>
       </header>
+
       <div class="about">
-        <div class="about__card">
-          <img class="about__icon" src="./images/about_1.svg" alt="">
-          <h2 class="about__title _1">
-            스피디한 학습
-          </h2>
-          <p class="about__text">
-            군더더기 없는 학습으로 <br>
-            효율성을 끌어 올린다.
-          </p>
-        </div>
-        <div class="about__card">
-          <img class="about__icon" src="./images/about_2.svg" alt="">
-          <h2 class="about__title _2">
-            교재 및 외부 자료 활용
-          </h2>
-          <p class="about__text">
-            본 교재 및 외부 자료를 활용해서 <br>
-            보다 심도있게 실습한다.
-          </p>
-        </div>
-        <div class="about__card">
-          <img class="about__icon" src="./images/about_3.svg" alt="">
-          <h2 class="about__title _3">
-            플레이그라운드
-          </h2>
-          <p class="about__text">
-            사이드 프로젝트를 만들어 재미를 이끌어서 <br>
-            반복 학습을 돕는다.
-          </p>
-        </div>
+      
       </div>
     </section>
+
     <section id="html" class="section">
       <header class="section__header">
         <strong class="section__tag">
-          HTML
+          html
         </strong>
         <h1 class="section__title">
           갖다 놓는 HTML
@@ -127,13 +91,14 @@
         </div>
       </article>
     </section>
+
     <section id="css" class="section">
       <header class="section__header">
         <strong class="section__tag">
           css
         </strong>
         <h1 class="section__title">
-          꾸며주는 CSS
+          꾸미는 CSS
         </h1>
       </header>
       <article class="html-css _css">
@@ -155,13 +120,14 @@
             <dt class="sr-only">종류</dt>
             <dd>스타일</dd>
             <dt class="sr-only">용도</dt>
-            <dd>웹개발</dd>
+            <dd>웹 개발</dd>
             <dt class="sr-only">난이도</dt>
             <dd>중간</dd>
           </dl>
         </div>
       </article>
     </section>
+
     <section id="curriculum" class="section">
       <header class="section__header">
         <strong class="section__tag">
@@ -173,17 +139,22 @@
       </header>
       <div class="curriculum">
         <ol class="curriculum__list">
-          <li><span>웹 프로그래밍이란?</span></li>
+          <li><span>웹프로그래밍이란?</span></li>
           <li><span>HTML 기초</span></li>
           <li><span>CSS 기초</span></li>
           <li><span>JavaScript 기초</span></li>
           <li><span>HTML, CSS, JAVASCRIPT 심화</span></li>
           <li><span>파이널 프로젝트</span></li>
-          <div class="curriculum__progress"></div>
+          <!-- curriculum__progress의 원래 위치 -->
         </ol>
+        <!-- curriculum__progress의 위치 이동 -->
+        <div class="curriculum__progress">
+          <div class="bar"></div>
+        </div>
       </div>
     </section>
-<section id="contact" class="section">
+
+    <section id="contact" class="section">
       <header class="section__header">
         <strong class="section__tag">
           contact
@@ -198,62 +169,66 @@
           <label for="ct_1" class="sr-only">연락처</label>
           <input name="contact" type="radio" id="ct_2">
           <label for="ct_2" class="sr-only">메시지</label>
-          <div class="contact__slides">
-            <div class="contact__slide-con">
-              <div class="contact__slide">
-                <address>
-                  <table class="contact__contacts">
-                    <caption class="sr-only">연락처 목록</caption>
-                    <tr>
-                      <th>깃허브</th>
-                      <td>
-                        <a href="https://github.com/Goldstargreat" target="_blank" alt="새 창에서 열기">
-                          <img src="./images/github.png" alt="">
-                          깃허브 바로가기
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>휴대폰</th>
-                      <td>
-                        <a href="01097242198">
-                          phone:01097242198
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>이메일</th>
-                      <td>
-                        <a href="mailto:goldstargreat@gmail.com">
-                          goldstargreat@gmail.com
-                        </a>
-                      </td>
-                    </tr>
-                  </table>
-                </address>
-              </div>
-              <div class="contact__slide">
-                <form action="#" method="get">
-                  <div class="contact__leave">
-                    <textarea name="message" placeholder="메시지를 입력하세요." required></textarea>
-                    <div>
-                      <input name="email" type="email" placeholder="메일 주소를 입력하세요." required>
-                      <button type="submit">남기기</button>
-                    </div>
+          <!-- contact__slides의 원래 위치 -->
+        </div>
+
+        <!-- contact__slides의 위치 이동 -->
+        <div class="contact__slides">
+          <div class="contact__slide-con">
+            <div class="contact__slide">
+              <address>
+                <table class="contact__contacts">
+                  <caption class="sr-only">연락처 목록</caption>
+                  <tr>
+                    <th>깃허브</th>
+                    <td>
+                      <a href="https://github.com/Goldstargreat" target="_blank" alt="새 창에서 열기">
+                        <img src="./images/github.png" alt="">
+                        깃허브 바로가기
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>휴대폰</th>
+                    <td>
+                      <a href="01097242198" target="_blank" alt="새 창에서 열기">
+                        
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>이메일</th>
+                    <td>
+                      <a href="mailto:goldstargreat@gmail.com">
+                        goldstargreat@gmail.com
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </address>
+            </div>
+            <div class="contact__slide">
+              <form action="#" method="get">
+                <div class="contact__leave">
+                  <textarea name="message" placeholder="메시지를 입력하세요." required></textarea>
+                  <div>
+                    <input name="email" type="email" placeholder="메일주소를 입력하세요." required>
+                    <button type="submit">남기기</button>
                   </div>
-                </form>
-              </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </section>
+
   </main>
   <footer>
     <h1 class="sr-only">Copyright</h1>
     <p>
       2025 goldstargreat - All rights reserved
     </p>
-  </footer>  
+  </footer>
 </body>
 </html>
