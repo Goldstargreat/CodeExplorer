@@ -1,11 +1,12 @@
 const headerNavs = [
-  {title: '웹 프로그래밍', link: '#about' },
-  {title: 'HTML', link: '#html' },
-  {title: 'CSS', link: '#css' },
-  {title: '커리큘럼', link: '#cirriculum' },
-  {title: '문의하기', link: '#contact' }
+  { title: '웹 프로그래밍', link: '#about' },
+  { title: 'HTML', link: '#html' },
+  { title: 'CSS', link: '#css' },
+  { title: '커리큘럼', link: '#curriculum' },
+  { title: '문의하기', link: '#contact' }
 ];
-const $headerNavUlv = document.querySelector('.header__nav ul');
+
+const $headerNavUl = document.querySelector('.header__nav ul');
 
 for (const nav of headerNavs) {
   const $li = document.createElement('li');
@@ -16,15 +17,15 @@ for (const nav of headerNavs) {
   $a.setAttribute('href', nav.link);
 
   $li.appendChild($a);
-  $headerNavUlv.appendChild($li);
-
+  $headerNavUl.appendChild($li);
 }
+
 const aboutCards = [
   {
     img: './images/about_1.svg',
     title: '스피디한 학습',
     descs: [
-      '군더더기 없는 학습으로',
+      '군더더기 없는 진행으로',
       '효율성을 끌어올린다.'
     ]
   },
@@ -40,7 +41,7 @@ const aboutCards = [
     img: './images/about_2.svg',
     title: '플레이그라운드',
     descs: [
-      '사이드 프로젝트를 만들어 재미를 이끌어서',
+      '사이드 프로젝트로 재미를 이끌어서',
       '반복학습을 돕는다.'
     ]
   }
