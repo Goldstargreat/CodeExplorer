@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="ko"> // 최종 수정 ㅇㄹㅇㄹ
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>goldstargreat</title>
-  <link rel="shortcut icon" href="./images/goldstar.jpg" type="image/x-icon">
+  <link rel="icon" href="./images/goldstar.jpg" type="image/jpeg">
 
   <link rel="stylesheet" href="./style.css">
   <script defer src="./script.js"></script>
 </head>
 <body>
 
-  <section class="intro"> 
+  <!-- 1. 인트로 -->
+  <section class="intro">
     <div class="intro__dark">
       <div class="intro__type">
         <div><span aria-hidden="true">😎</span> 개발이</div>
@@ -23,6 +23,7 @@
     <div class="intro__tilt--flip"></div>
   </section>
 
+  <!-- 2. 헤더 (메뉴 항목은 script.js가 채움) -->
   <header class="header">
     <h1>
       <a class="header__homelink" href="#">
@@ -30,51 +31,40 @@
       </a>
     </h1>
 
-    <!-- 버튼으로 수정 -->
-    <button class="header__menu-btn"></button>
+    <button type="button" class="header__menu-btn" aria-label="메뉴 열기"></button>
     <nav class="header__nav">
-      <ul>
-        
-      </ul>
+      <ul></ul>
     </nav>
   </header>
 
   <main>
 
+    <!-- 3. 소개 (카드는 script.js가 채움) -->
     <section id="about" class="section">
       <header class="section__header">
-        <strong class="section__tag">
-          about
-        </strong>
-        <h1 class="section__title">
-          goldstargreat
-        </h1>
+        <strong class="section__tag">about</strong>
+        <h1 class="section__title">goldstargreat</h1>
       </header>
-
-      <div class="about">
-      
-      </div>
+      <div class="about"></div>
     </section>
 
+    <!-- 4. HTML -->
     <section id="html" class="section">
       <header class="section__header">
-        <strong class="section__tag">
-          html
-        </strong>
-        <h1 class="section__title">
-          갖다 놓는 HTML
-        </h1>
+        <strong class="section__tag">html</strong>
+        <h1 class="section__title">갖다 놓는 HTML</h1>
       </header>
       <article class="html-css _html">
         <figure class="html-css__thumb">
           <img class="html-css__logo" src="./images/logo-html.svg" alt="HTML 로고">
+          <div class="html-css__shadow" aria-hidden="true"></div>
         </figure>
         <div class="html-css__content">
           <h2 class="html-css__title">
-            <div>
+            <span class="html-css__title-text">
               <em>H</em>yper<em>T</em>ext <br>
               <em>M</em>arkup <em>L</em>anguage
-            </div>
+            </span>
           </h2>
           <p class="html-css__desc">
             <strong>태그</strong>를 사용하여 웹 페이지 안의 요소들과 <br>
@@ -92,25 +82,23 @@
       </article>
     </section>
 
+    <!-- 5. CSS -->
     <section id="css" class="section">
       <header class="section__header">
-        <strong class="section__tag">
-          css
-        </strong>
-        <h1 class="section__title">
-          꾸미는 CSS
-        </h1>
+        <strong class="section__tag">css</strong>
+        <h1 class="section__title">꾸미는 CSS</h1>
       </header>
       <article class="html-css _css">
         <figure class="html-css__thumb">
           <img class="html-css__logo" src="./images/logo-css.svg" alt="CSS 로고">
+          <div class="html-css__shadow" aria-hidden="true"></div>
         </figure>
         <div class="html-css__content">
           <h2 class="html-css__title">
-            <div>
-              <em>C</em>ascade <br>
-              <em>S</em>type <em>S</em>heet
-            </div>
+            <span class="html-css__title-text">
+              <em>C</em>ascading <br>
+              <em>S</em>tyle <em>S</em>heets
+            </span>
           </h2>
           <p class="html-css__desc">
             웹 페이지 요소에 각종 속성을 부여하여 <br>
@@ -128,14 +116,11 @@
       </article>
     </section>
 
+    <!-- 6. 교과과정 -->
     <section id="curriculum" class="section">
       <header class="section__header">
-        <strong class="section__tag">
-          curriculum
-        </strong>
-        <h1 class="section__title">
-          교과과정
-        </h1>
+        <strong class="section__tag">curriculum</strong>
+        <h1 class="section__title">교과과정</h1>
       </header>
       <div class="curriculum">
         <ol class="curriculum__list">
@@ -143,36 +128,28 @@
           <li><span>HTML 기초</span></li>
           <li><span>CSS 기초</span></li>
           <li><span>JavaScript 기초</span></li>
-          <li><span>HTML, CSS, JAVASCRIPT 심화</span></li>
+          <li><span>HTML, CSS, JavaScript 심화</span></li>
           <li><span>파이널 프로젝트</span></li>
-          <!-- curriculum__progress의 원래 위치 -->
         </ol>
-        <!-- curriculum__progress의 위치 이동 -->
         <div class="curriculum__progress">
           <div class="bar"></div>
         </div>
       </div>
     </section>
 
+    <!-- 7. 문의하기 -->
     <section id="contact" class="section">
       <header class="section__header">
-        <strong class="section__tag">
-          contact
-        </strong>
-        <h1 class="section__title">
-          문의하기
-        </h1>
+        <strong class="section__tag">contact</strong>
+        <h1 class="section__title">문의하기</h1>
       </header>
       <div class="contact">
+        <!-- 탭 버튼 (글자와 동작은 script.js가 처리) -->
         <div class="contact__tab">
-          <input name="contact" type="radio" id="ct_1" checked>
-          <label for="ct_1" class="sr-only">연락처</label>
-          <input name="contact" type="radio" id="ct_2">
-          <label for="ct_2" class="sr-only">메시지</label>
-          <!-- contact__slides의 원래 위치 -->
+          <button type="button" class="contact__tab-btn on">연락처 보기</button>
+          <button type="button" class="contact__tab-btn">메시지 남기기</button>
         </div>
 
-        <!-- contact__slides의 위치 이동 -->
         <div class="contact__slides">
           <div class="contact__slide-con">
             <div class="contact__slide">
@@ -182,24 +159,16 @@
                   <tr>
                     <th>깃허브</th>
                     <td>
-                      <a href="https://github.com/Goldstargreat" target="_blank" alt="새 창에서 열기">
+                      <a href="https://github.com/Goldstargreat" target="_blank" rel="noopener" title="새 창에서 열기">
                         <img src="./images/github.png" alt="">
                         깃허브 바로가기
                       </a>
                     </td>
                   </tr>
                   <tr>
-                    <th>휴대폰</th>
-                    <td>
-                      <a href="tel: 01097242198">01097242198</a>
-                    </td>
-                  </tr>
-                  <tr>
                     <th>이메일</th>
                     <td>
-                      <a href="mailto:goldstargreat@gmail.com">
-                        goldstargreat@gmail.com
-                      </a>
+                      <a href="mailto:goldstargreat@gmail.com">goldstargreat@gmail.com</a>
                     </td>
                   </tr>
                 </table>
@@ -222,10 +191,11 @@
     </section>
 
   </main>
+
   <footer>
     <h1 class="sr-only">Copyright</h1>
     <p>
-      2025 goldstargreat - All rights reserved
+      <span class="footer__year">2025</span> goldstargreat - All rights reserved
     </p>
   </footer>
 </body>

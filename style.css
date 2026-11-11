@@ -1,16 +1,10 @@
-@import url('./styles/1-intro.css');
-@import url('./styles/2-header.css');
-@import url('./styles/3-main.css');
-@import url('./styles/4-about.css');
-@import url('./styles/5-html-css.css');
-@import url('./styles/6-curriculum.css');
-@import url('./styles/7-contact.css');
-@import url('./styles/8-footer.css');
+/* 동작(애니메이션·마우스 효과·탭 전환)은 script.js에서 처리하고,
+   이 파일은 색상·글꼴·배치만 담당합니다. */
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
 
-/* ===== 변수 구간 ===== */
+/* ===== 0. 변수 ===== */
 :root {
   --color-main: #FF4200;
   --color-sub: #00A200;
@@ -32,53 +26,18 @@
   --height-toolbar: 72px;
 }
 
-/* ===== 리셋 구간 ===== */
-body {
-  margin: 0;
-  font-family: 'Noto Sans KR', sans-serif;
-
-  /* 개발용 설정 */
-  min-height: 150vh;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-size: inherit;
-  font-weight: normal;
-  margin: 0;
-}
-
-p {
-  margin: 0;
-}
-
-strong, em {
-  font-weight: inherit;
-  font-style: normal;
-}
-
-ul, ol {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-dl { margin: 0; }
-dd {
-  margin: 0;
-  display: inline;
-}
-
-figure { margin: 0; }
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
+/* ===== 0. 리셋 ===== */
+body { margin: 0; font-family: 'Noto Sans KR', sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: normal; margin: 0; }
+p, dl, figure { margin: 0; }
+strong, em { font-weight: inherit; font-style: normal; }
+ul, ol { margin: 0; padding: 0; list-style-type: none; }
+dd { margin: 0; display: inline; }
+a { text-decoration: none; color: inherit; }
 th { font-weight: normal; }
-
 address { font-style: inherit; }
 
+/* 화면에는 안 보이고 스크린리더만 읽는 글자 */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -89,4 +48,484 @@ address { font-style: inherit; }
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* ===== 1. 인트로 ===== */
+.intro {
+  position: relative;
+  background-image: url('./images/intro-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.intro__dark {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.67);
+}
+.intro__type {
+  display: inline-flex;
+  gap: 0.32em;
+  font-family: var(--font-code);
+  font-size: 2.8em;
+  font-weight: bold;
+  color: white;
+}
+.intro__tilt,
+.intro__tilt--flip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background-color: var(--color-main);
+  clip-path: polygon(100% 90%, 100% 100%, 0 100%, 0 0);
+}
+.intro__tilt--flip {
+  clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 90%);
+  opacity: 0.5;
+}
+
+/* ===== 2. 헤더 ===== */
+.header {
+  display: flex;
+  position: sticky;
+  z-index: 2;   /* 스크롤되는 내용 위로 */
+  top: 0;
+  height: var(--height-toolbar);
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-main);
+  color: white;
+}
+.header__homelink {
+  display: inline-block;
+  padding: 0 24px;
+  height: var(--height-toolbar);
+  line-height: var(--height-toolbar);
+}
+.header__logo {
+  height: 48px;
+  vertical-align: middle;
+  margin-bottom: 4px;
+}
+.header__nav-item {
+  font-size: var(--font-size-larger);
+}
+.header__nav-item a {
+  display: inline-block;   /* 클릭 영역 확대 */
+  height: var(--height-toolbar);
+  line-height: var(--height-toolbar);
+}
+
+/* ===== 3. 섹션 공통 ===== */
+.section {
+  padding: 64px 16px;
+  text-align: center;
+}
+.section__tag {
+  font-size: var(--font-size-tag);
+  color: var(--color-sub);
+}
+.section__title {
+  font-size: var(--font-size-title);
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+/* ===== 4. 소개(about) ===== */
+#about { background-color: var(--color-light-bg); }
+.about {
+  display: inline-flex;
+  gap: 1em;
+  margin-top: 48px;
+}
+.about__card {
+  padding: 48px;
+  color: white;
+  background-color: var(--color-dark);
+  border-radius: 12px;
+  transition: all 350ms;   /* script.js가 크기·흐림을 바꿀 때 부드럽게 */
+}
+.about__icon { width: 120px; opacity: 0.25; }
+.about__title {
+  margin-top: 0.6em;
+  font-size: var(--font-size-larger);
+  font-weight: bold;
+}
+.about__title._1 { color: #FFB974; }
+.about__title._2 { color: #6BB0F3; }
+.about__title._3 { color: #FFBDCE; }
+.about__text {
+  margin-top: 0.8em;
+  font-size: var(--font-size-text);
+}
+
+/* ===== 5. HTML·CSS ===== */
+.html-css {
+  margin: 56px 0;
+  display: inline-flex;
+  gap: 56px;
+}
+.html-css__thumb { position: relative; }
+/* 로고 아래 그림자 (짙어지는 효과는 script.js) */
+.html-css__shadow {
+  position: absolute;
+  height: 10%;
+  background-color: black;
+  border-radius: 50%;
+  opacity: 0.08;
+}
+.html-css__title {
+  font-size: var(--font-size-subtitle);
+  font-weight: 100;
+}
+.html-css__title-text { display: block; }
+._html .html-css__title em { color: #F16528; }
+._css .html-css__title em { color: #2965F1; }
+.html-css__desc {
+  margin-top: 1.6em;
+  font-size: var(--font-size-text);
+  color: var(--color-text);
+}
+.html-css__desc strong { font-weight: bold; }
+.html-css__spec { margin-top: 1.6em; }
+.html-css__spec dd {
+  margin-right: 1.2em;
+  font-size: var(--font-size-larger);
+  color: var(--color-lighter);
+}
+/* 초록색 체크 표시 */
+.html-css__spec dd::before {
+  content: '';
+  display: inline-block;
+  margin-right: 0.4em;
+  width: 12px;
+  height: 6px;
+  border-left: 4px solid var(--color-sub);
+  border-bottom: 4px solid var(--color-sub);
+  vertical-align: 0.2em;
+  transform: rotate(-45deg);
+}
+
+/* ===== 6. 교과과정 ===== */
+#curriculum { background-color: var(--color-dark); }
+#curriculum .section__title { color: white; }
+.curriculum {
+  display: inline-block;
+  position: relative;
+}
+.curriculum__list {
+  display: inline-flex;
+  font-size: var(--font-size-larger);
+  font-weight: 100;
+  text-align: left;
+  color: white;
+}
+.curriculum__list li { font-size: 1.1em; }
+/* 항목 앞 동그라미 */
+.curriculum__list li::before {
+  content: '';
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  border-radius: 100%;
+  border: 4px solid white;
+  background-color: var(--color-dark);
+}
+.curriculum__list li.on::before { background-color: var(--color-sub); }
+.curriculum__progress { position: absolute; }
+
+/* ===== 7. 문의하기 ===== */
+#contact {
+  padding-left: 0;
+  padding-right: 0;
+  background-color: var(--color-light-bg);
+}
+.contact { margin-top: 3em; }
+.contact__tab {
+  display: flex;
+  justify-content: center;
+  font-size: var(--font-size-larger);
+}
+.contact__tab-btn {
+  all: unset;
+  padding: 0.8em 4em;
+  background-color: white;
+  cursor: pointer;
+}
+.contact__tab-btn:first-child { border-radius: 12px 0 0 12px; }
+.contact__tab-btn:last-child { border-radius: 0 12px 12px 0; }
+.contact__tab-btn.on { color: white; background-color: var(--color-main); }
+.contact__tab-btn:focus-visible { outline: 4px solid var(--color-sub); }
+
+.contact__slides {
+  margin: 1.6em 0;
+  width: 100vw;
+  overflow: hidden;
+}
+.contact__slide-con {
+  display: flex;
+  width: 200vw;
+  transition: margin-left 500ms;   /* script.js가 margin-left를 바꿀 때 부드럽게 */
+}
+.contact__slide { width: 100vw; }
+
+.contact__contacts {
+  margin: 0 auto;
+  text-align: left;
+  color: var(--color-text);
+}
+.contact__contacts th {
+  padding-right: 3em;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: right;
+  color: var(--color-dark);
+  border-right: 4px solid var(--color-light-bd);
+}
+.contact__contacts img {
+  margin-right: 0.1em;
+  width: 32px;
+  vertical-align: middle;
+}
+
+.contact__leave {
+  display: inline-flex;
+  margin-top: 1em;
+  gap: 8px;
+}
+.contact__leave div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.contact__leave textarea,
+.contact__leave input[type=email] {
+  margin: 0;
+  font-size: var(--font-size-text);
+  border: 2px solid var(--color-light-bd);
+}
+.contact__leave textarea::placeholder,
+.contact__leave input[type=email]::placeholder {
+  color: var(--color-lighter);
+}
+.contact__leave textarea:focus-visible,
+.contact__leave input[type=email]:focus-visible {
+  border: 2px solid var(--color-sub);
+  outline: none;
+}
+.contact__leave textarea { resize: none; padding: 0.6em; }
+.contact__leave input[type=email] {
+  padding: 0 0.6em;
+  height: 48px;
+  line-height: 48px;
+}
+.contact__leave button {
+  all: unset;
+  height: 64px;
+  line-height: 64px;
+  color: white;
+  background-color: var(--color-sub);
+  cursor: pointer;
+}
+.contact__leave button:hover { opacity: 0.8; }
+.contact__leave button:focus-visible { outline: 4px solid var(--color-sub); }
+
+/* ===== 8. 푸터 ===== */
+footer {
+  padding: 2em;
+  font-size: var(--font-size-text);
+  text-align: center;
+  color: white;
+  background-color: var(--color-lighter);
+}
+
+
+/* =========================================
+   모바일 (768px 이하)
+   ========================================= */
+@media (max-width: 768px) {
+  /* 인트로 */
+  .intro { height: 100vh; }
+  .intro__type {
+    margin-top: 36vh;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  /* 헤더: 메뉴는 숨기고 ≡ 버튼만 보이기 */
+  .header__nav { display: none; }
+  .header__menu-btn {
+    all: unset;
+    display: block;
+    width: var(--height-toolbar);
+    height: var(--height-toolbar);
+    background-image: url('./images/menu-button.svg');
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+  /* script.js가 붙이는 클래스: on(버튼 눌림), active(메뉴 열림) */
+  .header__menu-btn.on { background-color: var(--color-dark); }
+  .header__nav.active {
+    display: block;
+    position: absolute;
+    top: var(--height-toolbar);
+    right: 0;
+    background-color: var(--color-dark);
+    padding-bottom: 1em;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  }
+  .header__nav-item { width: 100vw; text-align: center; }
+  .header__nav-item a { width: 100vw; }
+  .header__nav-item:not(:last-child) {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.06);
+  }
+  .header__nav-line { display: none; }
+
+  /* 소개 */
+  .about { flex-direction: column; width: 100%; }
+
+  /* HTML·CSS */
+  #html { border-bottom: 4px solid var(--color-light-bg); }
+  .html-css { flex-direction: column; }
+  .html-css__logo { width: 50%; }
+  .html-css__content { text-align: center; }
+  .html-css__title-text { display: inline-block; text-align: left; }
+  .html-css__shadow { left: 25%; bottom: -16%; width: 50%; }
+
+  /* 교과과정: 세로 목록 + 점선 */
+  .curriculum__list { flex-direction: column; margin-top: 48px; }
+  .curriculum__list li { line-height: 100px; }
+  .curriculum__list li span { margin-left: 1.6em; }
+  .curriculum__progress {
+    top: 108px;
+    left: 12px;
+    width: 0;
+    height: 500px;
+    border-left: 6px dotted white;
+    transform: skewY(-30deg);
+  }
+  .curriculum__progress .bar { display: none; }
+
+  /* 문의하기 */
+  .contact__tab-btn { padding: 0.8em 2em; }
+  .contact__contacts th {   /* 제목 칸 숨기기 (sr-only와 같음) */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  .contact__contacts tr > * { padding: 0.6em; }
+  .contact__contacts td::before {
+    content: '▶';
+    margin-right: 0.6em;
+    font-size: 0.67em;
+    opacity: 0.5;
+  }
+  .contact__leave { flex-direction: column; }
+  .contact__leave textarea,
+  .contact__leave input[type=email] { width: 80vw; }
+}
+
+
+/* =========================================
+   PC (769px 이상)
+   ========================================= */
+@media (min-width: 769px) {
+  /* 인트로 */
+  .intro { height: 500px; }
+  .intro__type { margin-top: 172px; align-items: center; }
+  .intro__type span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0.25em;
+  }
+
+  /* 헤더: 가로 메뉴 */
+  .header__menu-btn { display: none; }
+  .header__nav-item { display: inline-block; position: relative; }
+  .header__nav-item:last-child { margin-right: 1.6em; }
+  .header__nav-item a { padding: 0 0.8em; }
+  /* 흰색 밑줄 (펴지는 동작은 script.js) */
+  .header__nav-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 8px;
+    background-color: white;
+    transition: all 350ms;
+  }
+
+  /* 2칸 그리드 (HTML·CSS가 나란히) */
+  main { display: grid; grid-template-columns: 1fr 1fr; }
+  #about, #curriculum, #contact { grid-column: 1 / -1; }
+
+  /* 소개 */
+  .about__card { width: 320px; cursor: pointer; }
+
+  /* HTML·CSS */
+  #html { border-right: 4px solid var(--color-light-bg); }
+  .html-css__logo { width: 144px; }
+  .html-css__content { text-align: left; }
+  .html-css__shadow { left: calc(50% - 72px); bottom: -24px; width: 144px; }
+
+  /* 교과과정: 가로 목록 + 진행 막대 */
+  #curriculum { padding-bottom: 88px; }
+  .curriculum__list { margin: 56px 0 56px 40px; }
+  .curriculum__list li {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    cursor: pointer;
+  }
+  .curriculum__list li span {
+    display: inline-block;
+    width: 164px;
+    position: absolute;
+    z-index: 1;
+    top: 84px;
+    left: 14px;
+    opacity: 0.5;
+    transform: rotate(45deg);
+  }
+  .curriculum__list li.on span { opacity: 1; }
+  .curriculum__progress {
+    top: 70px;
+    left: 56px;
+    width: 1000px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  /* 초록 막대 (길이는 script.js가 바꿈) */
+  .curriculum__progress .bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 8px;
+    background-color: var(--color-sub);
+    transition: width 1s;
+  }
+
+  /* 문의하기 */
+  .contact__contacts { border-spacing: 3em 1em; }
+  .contact__contacts a:hover {
+    color: var(--color-emph);
+    text-decoration: underline;
+  }
+  .contact__leave textarea,
+  .contact__leave input[type=email] { width: 360px; }
 }
