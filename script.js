@@ -280,7 +280,7 @@ const pages = {
         "// 반복문: 배열의 값을 하나씩 꺼내기\n" +
         "const menus = ['HTML', 'CSS', 'JavaScript'];\n" +
         "for (let i = 0; i < menus.length; i++) {\n" +
-        "  console.log(i + '번째 메뉴: ' + menus[i]);\n" +
+        "  console.log((i + 1) + '번째 메뉴: ' + menus[i]);\n" +
         "}" },
       { type: 'table',
         head: ['연산자', '뜻', '예'],
