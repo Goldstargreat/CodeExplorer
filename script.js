@@ -704,16 +704,76 @@ for (let i = 0; i < $contactTabs.length; i++) {
   });
 }
 
-// 메시지 폼: 아직 받을 서버가 없으므로 페이지 이동을 막고 안내만 합니다.
+// 메시지 폼: FormSubmit(무료 메일 전송 서비스)으로 보내면
+//           입력한 메시지가 아래 주소의 메일함으로 도착합니다.
+//           처음 한 번은 FormSubmit이 보내는 "확인(Activate)" 메일을 눌러야 합니다.
+const FORM_URL = 'https://formsubmit.co/ajax/luckygmsung@gmail.com';
+
 const $contactForm = document.querySelector('.contact__leave').parentElement;
 const $submitBtn = $contactForm.querySelector('button[type=submit]');
+const $messageInput = $contactForm.querySelector('textarea[name=message]');
+const $emailInput = $contactForm.querySelector('input[name=email]');
 
-$contactForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  $submitBtn.textContent = '준비 중이에요';
+// 버튼 글자를 잠깐 바꿨다가 2초 뒤 원래대로
+function showButtonText(text) {
+  $submitBtn.textContent = text;
   setTimeout(function () {
     $submitBtn.textContent = '남기기';
+    $submitBtn.disabled = false;
   }, 2000);
+}
+
+$contactForm.addEventListener('submit', function (e) {
+  e.preventDefault();   // 페이지가 새로고침되지 않게 막기
+
+  // 보내는 동안 두 번 눌리지 않게 버튼 잠그기
+  $submitBtn.disabled = true;
+  $submitBtn.textContent = '보내는 중...';
+
+  // 서버로 보낼 내용 (이름: 값)
+  const data = {
+    _subject: '[goldstargreat] 홈페이지 새 메시지',   // 메일 제목
+    _replyto: $emailInput.value,                      // 받은 메일에서 "답장"을 누르면 이 주소로
+    email: $emailInput.value,
+    message: $messageInput.value,
+    _template: 'table'                                // 메일을 표 모양으로
+  };
+
+  fetch(FORM_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (result) {
+      // FormSubmit은 성공하면 success: "true"(글자)를 돌려줌
+      if (result.success === 'true' || result.success === true) {
+        $contactForm.reset();   // 입력칸 비우기
+        showButtonText('보냈어요!');
+      } else {
+        // 실패 이유를 개발자 도구(F12) Console에 표시
+        console.log('FormSubmit 응답:', result.message);
+
+        if (result.message && result.message.indexOf('Activation') !== -1) {
+          // 처음 한 번: 확인 메일을 눌러야 함
+          showButtonText('메일함에서 승인해 주세요');
+        } else if (result.message && result.message.indexOf('web server') !== -1) {
+          // index.html을 파일로 직접 연 경우
+          showButtonText('Live Server로 열어 주세요');
+        } else {
+          showButtonText('전송 실패');
+        }
+      }
+    })
+    .catch(function (error) {
+      console.log(error);       // 인터넷 끊김 등
+      showButtonText('전송 실패');
+    });
 });
 
 
