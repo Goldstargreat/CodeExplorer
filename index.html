@@ -23,7 +23,7 @@
     <div class="intro__tilt--flip"></div>
   </section>
 
-  <!-- 2. 헤더 (메뉴 항목은 script.js가 채움) -->
+  <!-- 2. 헤더 (메뉴와 드롭다운은 script.js가 채움) -->
   <header class="header">
     <h1>
       <a class="header__homelink" href="#">
@@ -116,6 +116,39 @@
       </article>
     </section>
 
+    <!-- 5-2. JavaScript -->
+    <section id="js" class="section">
+      <header class="section__header">
+        <strong class="section__tag">javascript</strong>
+        <h1 class="section__title">움직이는 JavaScript</h1>
+      </header>
+      <article class="html-css _js">
+        <figure class="html-css__thumb">
+          <img class="html-css__logo" src="./images/logo-js.svg" alt="JavaScript 로고">
+          <div class="html-css__shadow" aria-hidden="true"></div>
+        </figure>
+        <div class="html-css__content">
+          <h2 class="html-css__title">
+            <span class="html-css__title-text">
+              <em>J</em>ava<em>S</em>cript
+            </span>
+          </h2>
+          <p class="html-css__desc">
+            사용자의 <strong>동작</strong>에 반응해 웹 페이지 요소를 <br>
+            바꾸고 움직이게 만드는 프로그래밍 언어입니다.
+          </p>
+          <dl class="html-css__spec">
+            <dt class="sr-only">종류</dt>
+            <dd>프로그래밍</dd>
+            <dt class="sr-only">용도</dt>
+            <dd>웹 개발</dd>
+            <dt class="sr-only">난이도</dt>
+            <dd>어려움</dd>
+          </dl>
+        </div>
+      </article>
+    </section>
+
     <!-- 6. 교과과정 -->
     <section id="curriculum" class="section">
       <header class="section__header">
@@ -191,6 +224,9 @@
     </section>
 
   </main>
+
+  <!-- 8. 하위 페이지 (메뉴의 하위 항목을 누르면 script.js가 내용을 채움) -->
+  <article id="page" class="page" hidden></article>
 
   <footer>
     <h1 class="sr-only">Copyright</h1>
