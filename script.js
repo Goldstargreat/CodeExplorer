@@ -294,6 +294,19 @@ for (let i = 0; i < $contactTabs.length; i++) {
 }
 
 
+// 메시지 폼: 아직 받을 서버가 없으므로 페이지가 새로고침되지 않게 막고 안내만 합니다.
+const $contactForm = document.querySelector('.contact__leave').parentElement;
+const $submitBtn = $contactForm.querySelector('button[type=submit]');
+
+$contactForm.addEventListener('submit', function (e) {
+  e.preventDefault();   // 기본 동작(페이지 이동) 막기
+  $submitBtn.textContent = '준비 중이에요';
+  setTimeout(function () {
+    $submitBtn.textContent = '남기기';
+  }, 2000);
+});
+
+
 // =========================================
 // 7. 푸터 - 올해 연도 자동 표시
 // =========================================
