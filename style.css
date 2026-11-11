@@ -24,6 +24,7 @@
   --font-size-text: 18px;
 
   --height-toolbar: 72px;
+  --curr-step: 200px;   /* 교과과정 동그라미 사이 간격 (PC) */
 }
 
 /* ===== 0. 리셋 ===== */
@@ -595,7 +596,7 @@ footer {
   .curriculum__list { margin: 56px 0 56px 40px; }
   .curriculum__list li {
     position: relative;
-    width: 200px;
+    width: var(--curr-step);
     height: 120px;
     cursor: pointer;
   }
@@ -613,7 +614,7 @@ footer {
   .curriculum__progress {
     top: 70px;
     left: 56px;
-    width: 1000px;
+    width: calc(var(--curr-step) * 5);   /* 동그라미 6개 사이 = 간격 5칸 */
     height: 8px;
     background-color: rgba(255, 255, 255, 0.1);
   }
@@ -639,8 +640,14 @@ footer {
 }
 
 
+/* 중간 PC 화면 (769~1279px): 교과과정이 화면 밖으로 나가지 않게 간격을 줄임 */
+@media (min-width: 769px) and (max-width: 1279px) {
+  :root { --curr-step: 140px; }
+}
+
 /* 좁은 PC 화면 (769~1000px): 메뉴 6개가 한 줄에 들어가도록 */
 @media (min-width: 769px) and (max-width: 1000px) {
+  :root { --curr-step: 100px; }
   .header__nav-item { font-size: 16px; }
   .header__nav-btn { padding: 0 0.5em; }
   .header__nav-item:last-child { margin-right: 0.6em; }

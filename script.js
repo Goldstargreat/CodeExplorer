@@ -653,7 +653,8 @@ for (let i = 0; i < $currLis.length; i++) {
   $li.addEventListener('mouseenter', function () {
     if (!isDesktop()) return;
     $li.classList.add('on');
-    $currProgBar.style.width = (200 * i) + 'px';
+    // li 한 칸의 실제 너비(화면 크기마다 다름) × 순서
+    $currProgBar.style.width = ($li.offsetWidth * i) + 'px';
   });
 
   $li.addEventListener('mouseleave', function () {
